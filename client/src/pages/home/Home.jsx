@@ -13,15 +13,16 @@ const Home = ({type}) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/lists`,
+          `http://localhost:4000/api/lists${type ? "?type=" + type: ""}${genre? "&genre=" + genre : ""}`,
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjE2MDcwNCwiZXhwIjoxNjcyNTkyNzA0fQ.JYCqF-984gHdFDLkeFKZcyy-PQ3Mj9ddIKy9n5Cqzk8",
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzNjY0NiwiZXhwIjoxNjcyNjY4NjQ2fQ.CPmiakVS6PNG7gFsjCBr8GE2mGsQvLazURBjNtErPOA"
             },
           }
         );
-        console.log(res.data);
+        setLists(res.data);
+        console.log(res.data)
       } catch (err) {
         console.log(err);
       }
@@ -33,10 +34,9 @@ const Home = ({type}) => {
     <div className="home">
       <Navbar />
       <Featured type={type}/>
-      <List/>
-      <List/>
-      <List/>
-      <List/>
+      {lists.map((list) => {
+        return <List key={list._id} list={list}/>
+      })}
     </div>
   );
 };
