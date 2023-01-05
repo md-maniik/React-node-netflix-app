@@ -17,12 +17,11 @@ const Home = ({type}) => {
           {
             headers: {
               token:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzNjY0NiwiZXhwIjoxNjcyNjY4NjQ2fQ.CPmiakVS6PNG7gFsjCBr8GE2mGsQvLazURBjNtErPOA"
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjkxNjI5NywiZXhwIjoxNjczMzQ4Mjk3fQ.hZU1AuuTqEJof9PYpMkN9QYAXsWPgwU4_cTFzdokxmg"
             },
           }
         );
         setLists(res.data);
-        console.log(res.data)
       } catch (err) {
         console.log(err);
       }

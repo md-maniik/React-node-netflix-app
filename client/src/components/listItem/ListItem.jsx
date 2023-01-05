@@ -5,7 +5,7 @@ import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import { useEffect, useState } from "react";
 import axios from "axios"
-
+import {Link} from "react-router-dom"
 export default function ListItem({ index, item }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState([])
@@ -17,11 +17,10 @@ export default function ListItem({ index, item }) {
         {
           headers: {
             token:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzNjY0NiwiZXhwIjoxNjcyNjY4NjQ2fQ.CPmiakVS6PNG7gFsjCBr8GE2mGsQvLazURBjNtErPOA"
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThhMzU3ODk5M2Y3OTViZmI3MTQzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3Mjc1NjMxNCwiZXhwIjoxNjczMTg4MzE0fQ.W1D3WrTlVM9YT66ZTAHZzJ2dxb57tV52xRYJ-3N9Aro"
           },
         })
         setMovie(res.data);
-        console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -29,7 +28,8 @@ export default function ListItem({ index, item }) {
     getMovie()
   },[item])
     return (
-    <div
+    <Link to={{pathname:"/watch"}} state={{movie}}>
+      <div
       className="listItem"
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
@@ -62,5 +62,6 @@ export default function ListItem({ index, item }) {
         </>
       )}
     </div>
+    </Link>
   );
 }
